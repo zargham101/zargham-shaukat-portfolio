@@ -239,7 +239,7 @@ const Portfolio = () => {
                             className="p-3 bg-slate-800/50 rounded-full hover:bg-purple-600 transition-all duration-300 hover:scale-110">
                             <Github size={24} />
                         </a>
-                        <a href="https://www.linkedin.com/in/zarghamshaukat-953708182" target="_blank" rel="noopener noreferrer"
+                        <a href="https://www.linkedin.com/in/zargham-shaukat-953708182/" target="_blank" rel="noopener noreferrer"
                             className="p-3 bg-slate-800/50 rounded-full hover:bg-purple-600 transition-all duration-300 hover:scale-110">
                             <Linkedin size={24} />
                         </a>
