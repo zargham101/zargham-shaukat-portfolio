@@ -6,6 +6,41 @@ const Portfolio = () => {
     const [activeSection, setActiveSection] = useState('home');
     const [isVisible, setIsVisible] = useState({});
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [typedText, setTypedText] = useState('');
+    const fullText = "// Senior Software Engineer";
+
+    useEffect(() => {
+        let i = 0;
+        let isDeleting = false;
+        let timer;
+
+        const typeLoop = () => {
+            const typingSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && i <= fullText.length) {
+                setTypedText(fullText.substring(0, i));
+                i++;
+                timer = setTimeout(typeLoop, typingSpeed);
+            } else if (isDeleting && i >= 0) {
+                setTypedText(fullText.substring(0, i));
+                i--;
+                timer = setTimeout(typeLoop, typingSpeed);
+            } else if (!isDeleting && i > fullText.length) {
+                // Wait for 10 seconds while text is fully visible
+                timer = setTimeout(() => {
+                    isDeleting = true;
+                    typeLoop();
+                }, 10000);
+            } else if (isDeleting && i < 0) {
+                isDeleting = false;
+                i = 0;
+                timer = setTimeout(typeLoop, 500);
+            }
+        };
+
+        typeLoop();
+        return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -192,7 +227,7 @@ const Portfolio = () => {
                             <div className="space-y-4">
                                 <div className="h-6">
                                     <p className="text-neon-green font-mono tracking-widest uppercase text-sm border-r-2 border-neon-green pr-1 w-fit animate-blink-caret">
-                                        // Senior Software Engineer
+                                        {typedText}
                                     </p>
                                 </div>
                                 <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-none tracking-tighter">
