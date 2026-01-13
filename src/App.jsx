@@ -24,11 +24,13 @@ const Portfolio = () => {
                 }}
             />
 
-            {/* Radial Gradient overlay */}
+            {/* Optimized Radial Glow */}
             <div
-                className="fixed inset-0 opacity-40 pointer-events-none z-0"
+                className="fixed top-0 left-0 w-[800px] h-[800px] opacity-20 pointer-events-none z-0 -translate-x-1/2 -translate-y-1/2"
                 style={{
-                    background: `radial-gradient(circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(57, 255, 20, 0.15), transparent 80%)`
+                    background: `radial-gradient(circle, rgba(57, 255, 20, 0.2), transparent 70%)`,
+                    transform: `translate3d(var(--mouse-x, 0px), var(--mouse-y, 0px), 0)`,
+                    willChange: 'transform'
                 }}
             />
 

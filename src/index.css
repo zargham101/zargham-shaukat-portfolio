@@ -37,7 +37,7 @@ html {
 
 .neon-border {
     border: 1px solid rgba(57, 255, 20, 0.1);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease;
 }
 
 .neon-border:hover {
@@ -57,8 +57,11 @@ html {
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(16px);
+    background: rgba(15, 15, 15, 0.85);
+    /* More opaque background, less reliance on blur */
+    backdrop-filter: blur(8px);
+    /* Reduced from 16px to save GPU */
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
@@ -115,6 +118,7 @@ html {
 
 .animate-reveal {
     animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
 }
 
 @keyframes float {
@@ -131,6 +135,7 @@ html {
 
 .animate-float-slow {
     animation: float 6s ease-in-out infinite;
+    will-change: transform;
 }
 
 .text-gradient {
