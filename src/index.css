@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .ease-out-expo {
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -141,7 +147,26 @@ html {
 .text-gradient {
     background: linear-gradient(135deg, #fff 0%, #39FF14 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+@keyframes progress {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.animate-progress {
+    animation: progress 5s linear forwards;
+}
+
+#skills {
+    perspective: 2000px;
 }
 
 /* Custom Scrollbar */

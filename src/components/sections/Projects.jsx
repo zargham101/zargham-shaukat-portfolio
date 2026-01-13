@@ -28,21 +28,46 @@ const Projects = () => {
                             className={`group relative glass-card rounded-[3rem] overflow-hidden border border-white/5 hover:border-neon-green/40 transition-all duration-700 animate-reveal`}
                             style={{ animationDelay: `${index * 200}ms` }}
                         >
-                            {/* Project Header Area (Simulating an image or visual) */}
-                            <div className="h-64 bg-dark-secondary relative overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-br from-neon-green/10 to-transparent group-hover:opacity-100 transition-opacity duration-700" />
-                                <div className="absolute inset-0 flex items-center justify-center translate-y-10 group-hover:translate-y-0 transition-transform duration-700 opacity-20 group-hover:opacity-100">
-                                    <h4 className="text-[120px] font-black text-white/5 tracking-tighter uppercase whitespace-nowrap">
-                                        {project.name.split(' ')[0]}
-                                    </h4>
-                                </div>
-                                <div className="absolute top-8 right-8 flex gap-4">
-                                    <div className="p-3 bg-dark/80 backdrop-blur-md rounded-full border border-white/10 hover:border-neon-green transition-colors cursor-pointer group/icon">
-                                        <Github size={20} className="text-white group-hover/icon:text-neon-green" />
-                                    </div>
-                                    <div className="p-3 bg-dark/80 backdrop-blur-md rounded-full border border-white/10 hover:border-neon-green transition-colors cursor-pointer group/icon">
-                                        <ExternalLink size={20} className="text-white group-hover/icon:text-neon-green" />
-                                    </div>
+                            {/* Project Header Area */}
+                            <div className="h-72 bg-dark-secondary relative overflow-hidden group/header">
+                                {project.image ? (
+                                    <img
+                                        src={project.image}
+                                        alt={project.name}
+                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                                    />
+                                ) : (
+                                    <>
+                                        <div className="absolute inset-0 bg-gradient-to-br from-neon-green/10 to-transparent group-hover:opacity-100 transition-opacity duration-700" />
+                                        <div className="absolute inset-0 flex items-center justify-center translate-y-10 group-hover:translate-y-0 transition-transform duration-700 opacity-20 group-hover:opacity-100">
+                                            <h4 className="text-[120px] font-black text-white/5 tracking-tighter uppercase whitespace-nowrap">
+                                                {project.name.split(' ')[0]}
+                                            </h4>
+                                        </div>
+                                    </>
+                                )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-80" />
+                                <div className="absolute top-8 right-8 flex gap-4 z-20">
+                                    {project.githubUrl && project.githubUrl !== '#' && (
+                                        <a
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-3 bg-dark/80 backdrop-blur-md rounded-full border border-white/10 hover:border-neon-green transition-colors cursor-pointer group/icon"
+                                        >
+                                            <Github size={20} className="text-white group-hover/icon:text-neon-green" />
+                                        </a>
+                                    )}
+                                    {project.liveUrl && project.liveUrl !== '#' && (
+                                        <a
+                                            href={project.liveUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-3 bg-dark/80 backdrop-blur-md rounded-full border border-white/10 hover:border-neon-green transition-colors cursor-pointer group/icon"
+                                        >
+                                            <ExternalLink size={20} className="text-white group-hover/icon:text-neon-green" />
+                                        </a>
+                                    )}
                                 </div>
                             </div>
 

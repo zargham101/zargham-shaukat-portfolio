@@ -33,34 +33,47 @@ export const experiences = [
 
 export const projects = [
     {
-        name: "Veterinary Services Platform",
+        name: "Petla - Veterinary Platform",
         description: "Built 4 interconnected Next.js applications for comprehensive veterinary service management, featuring appointment scheduling, patient records, and real-time consultations.",
         tech: ["Next.js", "TypeScript", "PostgreSQL", "AWS"],
-        highlights: ["Multi-app architecture", "Real-time features", "Scalable design"]
+        highlights: ["Multi-app architecture", "Real-time features", "Scalable design"],
+        liveUrl: "https://petla.app/",
+        githubUrl: "https://github.com/zargham101",
+        image: "/petla.png"
     },
     {
         name: "Trusty Living System",
         description: "Property review platform for London localities with integrated Google Maps API, AWS S3, EC2, and IAM for secure, scalable operations.",
         tech: ["Next.js", "Google Maps API", "AWS", "PostgreSQL"],
-        highlights: ["Property ratings", "Agent reviews", "Map integration"]
+        highlights: ["Property ratings", "Agent reviews", "Map integration"],
+        liveUrl: "https://trustyliving.softaims.com/",
+        githubUrl: "https://github.com/zargham101",
+        image: "/trustyliving.png"
     },
     {
         name: "Breakness",
         description: "Gamification app promoting learning through blogs, articles, and courses with reward systems and achievement tracking.",
         tech: ["MongoDB", "Express", "React", "Node.js"],
-        highlights: ["Gamification", "User engagement", "Achievement system"]
+        highlights: ["Gamification", "User engagement", "Achievement system"],
+        liveUrl: "https://play.google.com/store/apps/details?id=com.breakness.breaknessbeta&pli=1",
+        githubUrl: "https://github.com/zargham101",
+        image: "/breakness.png"
     },
     {
         name: "Food-E",
-        description: "Comprehensive food delivery platform with real-time order tracking, restaurant management, and delivery logistics.",
+        description: "A comprehensive food delivery platform developed as a specialization starter project to master real-time logistics and state management in the MERN stack.",
         tech: ["MERN Stack", "Socket.io", "Vercel"],
-        highlights: ["Real-time tracking", "Order management", "Restaurant dashboard"]
+        highlights: ["Real-time tracking", "Order management", "Restaurant dashboard"],
+        liveUrl: "https://food-e-client.vercel.app/",
+        githubUrl: "https://github.com/zargham101",
+        image: "/food-e.png"
     },
     {
         name: "Gigcore",
         description: "Online marketing platform connecting businesses with social media content creators for seamless collaboration.",
         tech: ["MERN Stack", "Selenium", "REST APIs"],
-        highlights: ["Multi-user platform", "Content management", "Marketing tools"]
+        highlights: ["Multi-user platform", "Content management", "Marketing tools"],
+        githubUrl: "https://github.com/zargham101"
     }
 ];
 

@@ -1,12 +1,38 @@
-import React from 'react';
-import { Mail, Phone, Github, Linkedin, ArrowUpRight, Send } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { Mail, Phone, Github, Linkedin, ArrowUpRight, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+    const form = useRef();
+    const [status, setStatus] = useState('idle'); // idle, sending, success, error
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        setStatus('sending');
+
+        // Note: You need to replace these with your actual EmailJS credentials
+        // after creating an account at https://www.emailjs.com/
+        emailjs.sendForm(
+            'YOUR_SERVICE_ID',
+            'YOUR_TEMPLATE_ID',
+            form.current,
+            'YOUR_PUBLIC_KEY'
+        )
+            .then((result) => {
+                setStatus('success');
+                form.current.reset();
+                setTimeout(() => setStatus('idle'), 5000);
+            }, (error) => {
+                console.error(error.text);
+                setStatus('error');
+                setTimeout(() => setStatus('idle'), 5000);
+            });
+    };
+
     return (
         <section id="contact" className="py-40 px-4 sm:px-6 lg:px-8 bg-dark relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="relative glass-card rounded-[4rem] p-12 sm:p-24 border border-white/5 overflow-hidden group">
-                    {/* Animated background highlights */}
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neon-green/10 blur-[150px] -z-10 group-hover:bg-neon-green/20 transition-all duration-1000" />
                     <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-white/[0.02] blur-[100px] -z-10" />
 
@@ -22,10 +48,7 @@ const Contact = () => {
                             </p>
 
                             <div className="flex flex-col gap-8">
-                                <a
-                                    href="mailto:khanzargham434@gmail.com"
-                                    className="flex items-center gap-6 group/item w-fit"
-                                >
+                                <a href="mailto:khanzargham434@gmail.com" className="flex items-center gap-6 group/item w-fit">
                                     <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover/item:border-neon-green transition-all shadow-xl">
                                         <Mail size={24} className="text-gray-500 group-hover/item:text-neon-green" />
                                     </div>
@@ -36,10 +59,7 @@ const Contact = () => {
                                     <ArrowUpRight size={20} className="text-gray-700 opacity-0 group-hover/item:opacity-100 transition-all" />
                                 </a>
 
-                                <a
-                                    href="tel:+923071963998"
-                                    className="flex items-center gap-6 group/item w-fit"
-                                >
+                                <a href="tel:+923071963998" className="flex items-center gap-6 group/item w-fit">
                                     <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover/item:border-neon-green transition-all shadow-xl">
                                         <Phone size={24} className="text-gray-500 group-hover/item:text-neon-green" />
                                     </div>
@@ -53,32 +73,51 @@ const Contact = () => {
                         </div>
 
                         <div className="relative">
-                            <div className="glass-card rounded-[3rem] p-10 border border-white/10 relative z-10 transition-transform duration-700 group-hover:scale-[1.02]">
+                            <div className="glass-card rounded-[3rem] p-10 border border-white/10 relative z-10 transition-all duration-700 group-hover:scale-[1.02]">
                                 <h3 className="text-2xl font-black text-white mb-8 uppercase tracking-widest italic">Direct Message</h3>
-                                <div className="space-y-6">
+                                <form ref={form} onSubmit={sendEmail} className="space-y-6">
                                     <div className="space-y-2">
                                         <label className="text-[10px] text-gray-600 uppercase tracking-[0.2em] font-black ml-4">Full Name</label>
-                                        <input type="text" className="w-full bg-dark/50 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-neon-green/50 transition-all" placeholder="John Doe" />
+                                        <input required name="user_name" type="text" className="w-full bg-dark/50 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-neon-green/50 transition-all" placeholder="John Doe" />
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-[10px] text-gray-600 uppercase tracking-[0.2em] font-black ml-4">Email Address</label>
-                                        <input type="email" className="w-full bg-dark/50 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-neon-green/50 transition-all" placeholder="john@example.com" />
+                                        <input required name="user_email" type="email" className="w-full bg-dark/50 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-neon-green/50 transition-all" placeholder="john@example.com" />
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-[10px] text-gray-600 uppercase tracking-[0.2em] font-black ml-4">Message</label>
-                                        <textarea className="w-full bg-dark/50 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-neon-green/50 transition-all h-32 resize-none" placeholder="Tell me about your project..."></textarea>
+                                        <textarea required name="message" className="w-full bg-dark/50 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-neon-green/50 transition-all h-32 resize-none" placeholder="Tell me about your project..."></textarea>
                                     </div>
-                                    <button className="w-full bg-neon-green text-dark font-black py-5 rounded-2xl hover:scale-[1.05] transition-all flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(57,255,20,0.3)] group/btn">
-                                        LAUNCH MESSAGE <Send size={20} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+
+                                    <button
+                                        type="submit"
+                                        disabled={status === 'sending'}
+                                        className={`w-full font-black py-5 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-xl group/btn ${status === 'success' ? 'bg-green-500 text-white' :
+                                                status === 'error' ? 'bg-red-500 text-white' :
+                                                    'bg-neon-green text-dark hover:scale-[1.05]'
+                                            }`}
+                                    >
+                                        {status === 'idle' && (
+                                            <>LAUNCH MESSAGE <Send size={20} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" /></>
+                                        )}
+                                        {status === 'sending' && (
+                                            <><Loader2 size={20} className="animate-spin" /> SENDING...</>
+                                        )}
+                                        {status === 'success' && (
+                                            <><CheckCircle2 size={20} /> SENT SUCCESSFULLY!</>
+                                        )}
+                                        {status === 'error' && (
+                                            <><AlertCircle size={20} /> FAILED TO SEND</>
+                                        )}
                                     </button>
-                                </div>
+                                </form>
                             </div>
 
                             <div className="flex justify-center gap-12 mt-12 relative z-10">
-                                <a href="https://github.com/zargham101" className="p-4 rounded-2xl bg-white/[0.03] text-gray-500 hover:text-neon-green hover:border-neon-green/30 border border-transparent transition-all">
+                                <a href="https://github.com/zargham101" target="_blank" rel="noreferrer" className="p-4 rounded-2xl bg-white/[0.03] text-gray-500 hover:text-neon-green hover:border-neon-green/30 border border-transparent transition-all">
                                     <Github size={28} />
                                 </a>
-                                <a href="https://www.linkedin.com/in/zargham-shaukat-953708182/" className="p-4 rounded-2xl bg-white/[0.03] text-gray-500 hover:text-neon-green hover:border-neon-green/30 border border-transparent transition-all">
+                                <a href="https://www.linkedin.com/in/zargham-shaukat-953708182/" target="_blank" rel="noreferrer" className="p-4 rounded-2xl bg-white/[0.03] text-gray-500 hover:text-neon-green hover:border-neon-green/30 border border-transparent transition-all">
                                     <Linkedin size={28} />
                                 </a>
                             </div>
@@ -99,3 +138,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
