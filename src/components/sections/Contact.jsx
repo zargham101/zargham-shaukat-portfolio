@@ -1,32 +1,40 @@
 import React, { useRef, useState } from 'react';
 import { Mail, Phone, Github, Linkedin, ArrowUpRight, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const form = useRef();
     const [status, setStatus] = useState('idle'); // idle, sending, success, error
 
-    const sendEmail = (e) => {
+    const sendEmail = async (e) => {
         e.preventDefault();
         setStatus('sending');
 
-        // Note: You need to replace these with your actual EmailJS credentials
-        // after creating an account at https://www.emailjs.com/
-        emailjs.sendForm(
-            'YOUR_SERVICE_ID',
-            'YOUR_TEMPLATE_ID',
-            form.current,
-            'YOUR_PUBLIC_KEY'
-        )
-            .then((result) => {
+        const formData = new FormData(form.current);
+        // You can get your Access Key at https://web3forms.com/
+        formData.append("access_key", "695d590b-dc82-460a-8bc0-58045bf8bb0b");
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
                 setStatus('success');
                 form.current.reset();
                 setTimeout(() => setStatus('idle'), 5000);
-            }, (error) => {
-                console.error(error.text);
+            } else {
+                console.error("Submission failed:", data);
                 setStatus('error');
                 setTimeout(() => setStatus('idle'), 5000);
-            });
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 5000);
+        }
     };
 
     return (
@@ -93,8 +101,8 @@ const Contact = () => {
                                         type="submit"
                                         disabled={status === 'sending'}
                                         className={`w-full font-black py-5 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-xl group/btn ${status === 'success' ? 'bg-green-500 text-white' :
-                                                status === 'error' ? 'bg-red-500 text-white' :
-                                                    'bg-neon-green text-dark hover:scale-[1.05]'
+                                            status === 'error' ? 'bg-red-500 text-white' :
+                                                'bg-neon-green text-dark hover:scale-[1.05]'
                                             }`}
                                     >
                                         {status === 'idle' && (
