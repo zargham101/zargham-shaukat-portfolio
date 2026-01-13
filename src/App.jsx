@@ -11,7 +11,7 @@ import { useScroll, useMousePosition, useTypewriter } from './hooks/usePortfolio
 
 const Portfolio = () => {
     const { isScrolled, activeSection, scrollToSection } = useScroll();
-    const mousePosition = useMousePosition();
+    useMousePosition();
     const typedText = useTypewriter("// Senior Software Engineer");
 
     return (
@@ -28,7 +28,7 @@ const Portfolio = () => {
             <div
                 className="fixed inset-0 opacity-40 pointer-events-none z-0"
                 style={{
-                    background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(57, 255, 20, 0.15), transparent 80%)`
+                    background: `radial-gradient(circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(57, 255, 20, 0.15), transparent 80%)`
                 }}
             />
 

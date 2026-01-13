@@ -44,7 +44,7 @@ const Skills = () => {
                                         <div className="w-full h-[6px] bg-dark rounded-full overflow-hidden border border-white/5">
                                             <div
                                                 className="h-full bg-neon-green transition-all duration-1000 ease-out shadow-[0_0_12px_rgba(57,255,20,0.5)] group-hover:brightness-125"
-                                                style={{ width: `${85 + Math.random() * 10}%` }}
+                                                style={{ width: `${85 + (i * 2)}%` }}
                                             />
                                         </div>
                                     </div>

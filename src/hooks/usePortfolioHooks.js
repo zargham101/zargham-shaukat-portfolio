@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const useScroll = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -6,22 +6,41 @@ export const useScroll = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 100);
-
-            const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
-            const current = sections.find(section => {
-                const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    return rect.top <= 100 && rect.bottom >= 100;
-                }
-                return false;
+            // Use requestAnimationFrame to throttle scroll updates
+            window.requestAnimationFrame(() => {
+                setIsScrolled(window.scrollY > 100);
             });
-            if (current) setActiveSection(current);
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        // Use IntersectionObserver for active section tracking - much more efficient than getBoundingClientRect
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px', // Trigger when section is in middle of viewport
+            threshold: 0
+        };
+
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
+
+        sections.forEach((sectionId) => {
+            const element = document.getElementById(sectionId);
+            if (element) observer.observe(element);
+        });
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            observer.disconnect();
+        };
     }, []);
 
     const scrollToSection = (sectionId, callback) => {
@@ -36,17 +55,24 @@ export const useScroll = () => {
 };
 
 export const useMousePosition = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
+    // We'll still return the position but we'll also update CSS variables
+    // to avoid React re-renders for visual effects
     useEffect(() => {
+        const root = document.documentElement;
+
         const handleMouseMove = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
+            // Using requestAnimationFrame for smooth performance
+            window.requestAnimationFrame(() => {
+                root.style.setProperty('--mouse-x', `${e.clientX}px`);
+                root.style.setProperty('--mouse-y', `${e.clientY}px`);
+            });
         };
-        window.addEventListener('mousemove', handleMouseMove);
+
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    return mousePosition;
+    return null; // No longer need to return state to trigger re-renders
 };
 
 export const useTypewriter = (text, speed = 80, delay = 10000) => {
@@ -86,3 +112,4 @@ export const useTypewriter = (text, speed = 80, delay = 10000) => {
 
     return typedText;
 };
+
