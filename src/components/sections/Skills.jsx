@@ -35,28 +35,28 @@ const Skills = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-neon-green/5 blur-[180px] rounded-full pointer-events-none" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="flex flex-col items-center mb-24 text-center">
-                    <h2 className="text-6xl font-black tracking-tighter mb-8 text-gradient">Technical Mastery</h2>
-                    <div className="w-32 h-2 bg-neon-green rounded-full shadow-[0_0_20px_rgba(57,255,20,0.5)]" />
-                    <p className="mt-10 text-gray-400 font-mono text-sm max-w-2xl tracking-widest leading-relaxed">
+                <div className="flex flex-col items-center mb-16 sm:mb-24 text-center">
+                    <h2 className="text-4xl sm:text-6xl font-black tracking-tighter mb-6 sm:mb-8 text-gradient">Technical Mastery</h2>
+                    <div className="w-24 sm:w-32 h-2 bg-neon-green rounded-full shadow-[0_0_20px_rgba(57,255,20,0.5)]" />
+                    <p className="mt-8 sm:mt-10 text-gray-400 font-mono text-xs sm:text-sm max-w-2xl tracking-widest leading-relaxed">
                         // A rotating ecosystem of modern technologies focused on performance and scalability.
                     </p>
                 </div>
 
                 <div className="relative h-[600px] flex items-center justify-center">
                     {/* Navigation Buttons */}
-                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between z-30 px-2 lg:-mx-20">
+                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between z-30 px-2 sm:px-4 lg:-mx-20 pointer-events-none">
                         <button
                             onClick={handlePrev}
-                            className="p-5 rounded-full glass-card border border-white/5 hover:border-neon-green/50 hover:text-neon-green transition-all duration-500 group"
+                            className="p-3 sm:p-5 rounded-full glass-card border border-white/5 hover:border-neon-green/50 hover:text-neon-green transition-all duration-500 group pointer-events-auto"
                         >
-                            <ChevronLeft size={32} className="group-hover:-translate-x-1 transition-transform" />
+                            <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform sm:w-8 sm:h-8" />
                         </button>
                         <button
                             onClick={handleNext}
-                            className="p-5 rounded-full glass-card border border-white/5 hover:border-neon-green/50 hover:text-neon-green transition-all duration-500 group"
+                            className="p-3 sm:p-5 rounded-full glass-card border border-white/5 hover:border-neon-green/50 hover:text-neon-green transition-all duration-500 group pointer-events-auto"
                         >
-                            <ChevronRight size={32} className="group-hover:translate-x-1 transition-transform" />
+                            <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform sm:w-8 sm:h-8" />
                         </button>
                     </div>
 
@@ -82,25 +82,25 @@ const Skills = () => {
                                         pointerEvents: index === activeIndex ? 'auto' : 'none'
                                     }}
                                 >
-                                    <div className="glass-card rounded-[3rem] p-12 border border-white/10 relative overflow-hidden group shadow-2xl">
+                                    <div className="glass-card rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 border border-white/10 relative overflow-hidden group shadow-2xl mx-auto max-w-[90vw] sm:max-w-none">
                                         <div className="absolute -top-24 -right-24 w-60 h-60 bg-neon-green/10 blur-[80px] group-hover:bg-neon-green/20 transition-all duration-700" />
 
-                                        <div className="flex items-center gap-8 mb-16">
-                                            <div className="w-24 h-24 rounded-3xl bg-dark border border-white/10 flex items-center justify-center text-neon-green shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                                                <data.icon size={44} />
+                                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 mb-10 sm:mb-16 text-center sm:text-left">
+                                            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-dark border border-white/10 flex items-center justify-center text-neon-green shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                                                <data.icon size={36} className="sm:w-[44px] sm:h-[44px]" />
                                             </div>
                                             <div>
-                                                <h3 className="text-5xl font-black text-white tracking-tighter mb-2">{category}</h3>
-                                                <p className="text-xs uppercase tracking-[0.4em] text-neon-green font-bold">Expertise Level 0{index + 1}</p>
+                                                <h3 className="text-3xl sm:text-5xl font-black text-white tracking-tighter mb-2">{category}</h3>
+                                                <p className="text-[10px] uppercase tracking-[0.4em] text-neon-green font-bold">Expertise Level 0{index + 1}</p>
                                             </div>
                                         </div>
 
-                                        <div className="space-y-8 mb-16">
+                                        <div className="space-y-6 sm:space-y-8 mb-10 sm:mb-16">
                                             {data.items.map((skill, i) => (
                                                 <div key={i} className="group/item">
                                                     <div className="flex justify-between items-end mb-3">
-                                                        <span className="text-xl text-gray-300 font-bold tracking-tight group-hover/item:text-neon-green transition-colors">{skill}</span>
-                                                        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">{90 + (i % 3) * 3}% Proficiency</span>
+                                                        <span className="text-lg sm:text-xl text-gray-300 font-bold tracking-tight group-hover/item:text-neon-green transition-colors">{skill}</span>
+                                                        <span className="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest">{90 + (i % 3) * 3}% Proficiency</span>
                                                     </div>
                                                     <div className="w-full h-2 bg-dark rounded-full overflow-hidden border border-white/5 p-[2px]">
                                                         <div
@@ -112,7 +112,7 @@ const Skills = () => {
                                             ))}
                                         </div>
 
-                                        <p className="text-gray-400 italic text-lg leading-relaxed border-t border-white/5 pt-10">
+                                        <p className="text-gray-400 italic text-sm sm:text-lg leading-relaxed border-t border-white/5 pt-8 sm:pt-10">
                                             {data.description}
                                         </p>
                                     </div>

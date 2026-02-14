@@ -3,7 +3,7 @@ import { Award, Code, Briefcase, Mail, ArrowRight } from 'lucide-react';
 
 const Hero = ({ typedText, scrollToSection }) => {
     return (
-        <section id="home" className="min-h-screen flex items-center pt-28 px-4 sm:px-6 lg:px-8 relative z-10">
+        <section id="home" className="min-h-screen flex items-center pt-24 sm:pt-28 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
             <div className="max-w-7xl mx-auto w-full">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <div className="space-y-10 animate-reveal">
@@ -13,7 +13,7 @@ const Hero = ({ typedText, scrollToSection }) => {
                                     {typedText}
                                 </p>
                             </div>
-                            <h1 className="text-7xl sm:text-8xl lg:text-9xl font-bold leading-[0.9] tracking-tighter">
+                            <h1 className="text-5xl sm:text-7xl lg:text-9xl font-bold leading-[1] sm:leading-[0.9] tracking-tighter">
                                 <span className="block text-white">Zargham</span>
                                 <span className="block text-gradient">Shaukat</span>
                             </h1>
@@ -36,41 +36,41 @@ const Hero = ({ typedText, scrollToSection }) => {
 
                         <div className="max-w-xl relative group">
                             <div className="absolute -inset-1 bg-gradient-to-r from-neon-green/20 to-transparent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                            <div className="relative glass-card p-8 rounded-2xl border-l-[6px] border-neon-green">
-                                <p className="text-gray-300 leading-relaxed text-xl">
+                            <div className="relative glass-card p-6 sm:p-8 rounded-2xl border-l-[6px] border-neon-green">
+                                <p className="text-gray-300 leading-relaxed text-lg sm:text-xl">
                                     I build <span className="text-white font-bold italic">high-performance digital experiences</span> that bridge the gap between complex engineering and elegant design.
                                     Specializing in scalable MERN stack and Next.js ecosystems.
                                 </p>
                             </div>
                         </div>
 
-                        <div className="flex gap-6 items-center">
+                        <div className="flex gap-4 sm:gap-6 items-center">
                             <div className="flex flex-col">
-                                <span className="text-3xl font-bold text-white">15+</span>
-                                <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Projects Shipped</span>
+                                <span className="text-2xl sm:text-3xl font-bold text-white">15+</span>
+                                <span className="text-[8px] sm:text-[10px] uppercase tracking-widest text-gray-500 font-bold">Projects Shipped</span>
                             </div>
                             <div className="w-[1px] h-10 bg-white/10" />
                             <div className="flex flex-col">
-                                <span className="text-3xl font-bold text-white">3+</span>
-                                <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Years Exp.</span>
+                                <span className="text-2xl sm:text-3xl font-bold text-white">3+</span>
+                                <span className="text-[8px] sm:text-[10px] uppercase tracking-widest text-gray-500 font-bold">Years Exp.</span>
                             </div>
                             <div className="w-[1px] h-10 bg-white/10" />
                             <div className="flex flex-col">
-                                <span className="text-3xl font-bold text-white">100%</span>
-                                <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Code Quality</span>
+                                <span className="text-2xl sm:text-3xl font-bold text-white">100%</span>
+                                <span className="text-[8px] sm:text-[10px] uppercase tracking-widest text-gray-500 font-bold">Code Quality</span>
                             </div>
                         </div>
 
-                        <div className="flex flex-wrap gap-6 pt-6">
+                        <div className="flex flex-wrap gap-4 sm:gap-6 pt-6">
                             <button
                                 onClick={() => scrollToSection('projects')}
-                                className="px-10 py-5 bg-white text-dark rounded-xl font-black hover:bg-neon-green hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_40px_rgba(57,255,20,0.2)] flex items-center gap-3 group"
+                                className="px-6 py-4 sm:px-10 sm:py-5 bg-white text-dark rounded-xl font-black hover:bg-neon-green hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_40px_rgba(57,255,20,0.2)] flex items-center justify-center gap-3 group text-sm sm:text-base"
                             >
                                 VIEW MY WORK <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
                             </button>
                             <button
                                 onClick={() => scrollToSection('contact')}
-                                className="px-10 py-5 bg-dark-secondary text-white rounded-xl font-black border border-white/10 hover:border-neon-green/50 hover:bg-neon-green/5 transition-all duration-500 flex items-center gap-3 uppercase tracking-wider"
+                                className="px-6 py-4 sm:px-10 sm:py-5 bg-dark-secondary text-white rounded-xl font-black border border-white/10 hover:border-neon-green/50 hover:bg-neon-green/5 transition-all duration-500 flex items-center justify-center gap-3 uppercase tracking-wider text-sm sm:text-base"
                             >
                                 Let's Talk <Mail size={20} />
                             </button>
@@ -84,7 +84,7 @@ const Hero = ({ typedText, scrollToSection }) => {
                                 <div className="relative h-full w-full rounded-[4rem] overflow-hidden border-2 border-white/10 group">
                                     <div className="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-60 group-hover:opacity-0 transition-opacity duration-700 z-10" />
                                     <img
-                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+                                        src="/zargham.png"
                                         alt="Zargham Shaukat"
                                         className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
                                     />

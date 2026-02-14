@@ -40,49 +40,49 @@ const Contact = () => {
     return (
         <section id="contact" className="py-40 px-4 sm:px-6 lg:px-8 bg-dark relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
-                <div className="relative glass-card rounded-[4rem] p-12 sm:p-24 border border-white/5 overflow-hidden group">
+                <div className="relative glass-card rounded-[2.5rem] sm:rounded-[4rem] p-8 sm:p-24 border border-white/5 overflow-hidden group">
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-neon-green/10 blur-[150px] -z-10 group-hover:bg-neon-green/20 transition-all duration-1000" />
                     <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-white/[0.02] blur-[100px] -z-10" />
 
-                    <div className="grid lg:grid-cols-2 gap-20 items-center">
+                    <div className="grid lg:grid-cols-2 gap-12 sm:gap-20 items-center">
                         <div>
-                            <span className="text-neon-green font-mono text-sm uppercase tracking-[0.5em] font-black mb-8 block">// Availability: Open for New Projects</span>
-                            <h2 className="text-7xl sm:text-8xl font-black mb-10 tracking-tighter italic leading-none">
+                            <span className="text-neon-green font-mono text-xs sm:text-sm uppercase tracking-[0.3em] sm:tracking-[0.5em] font-black mb-6 sm:mb-8 block">// Availability: Open for New Projects</span>
+                            <h2 className="text-4xl sm:text-7xl lg:text-8xl font-black mb-8 sm:mb-10 tracking-tighter italic leading-none">
                                 Let's Build <br />
                                 <span className="text-gradient">Something <br />Unforgettable.</span>
                             </h2>
-                            <p className="text-2xl text-gray-400 mb-12 max-w-lg leading-relaxed font-medium">
+                            <p className="text-lg sm:text-2xl text-gray-400 mb-10 sm:mb-12 max-w-lg leading-relaxed font-medium">
                                 currently architecting digital futures. have a vision? let's turn it into high-performance reality.
                             </p>
 
-                            <div className="flex flex-col gap-8">
-                                <a href="mailto:khanzargham434@gmail.com" className="flex items-center gap-6 group/item w-fit">
-                                    <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover/item:border-neon-green transition-all shadow-xl">
-                                        <Mail size={24} className="text-gray-500 group-hover/item:text-neon-green" />
+                            <div className="flex flex-col gap-6 sm:gap-8">
+                                <a href="mailto:khanzargham434@gmail.com" className="flex items-center gap-4 sm:gap-6 group/item w-fit">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover/item:border-neon-green transition-all shadow-xl">
+                                        <Mail size={20} className="text-gray-500 group-hover/item:text-neon-green sm:w-6 sm:h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-gray-600 uppercase tracking-widest font-black mb-1">Send an Email</p>
-                                        <p className="text-xl text-white font-bold group-hover/item:text-neon-green transition-colors">khanzargham434@gmail.com</p>
+                                        <p className="text-[8px] sm:text-[10px] text-gray-600 uppercase tracking-widest font-black mb-1">Send an Email</p>
+                                        <p className="text-base sm:text-xl text-white font-bold group-hover/item:text-neon-green transition-colors">khanzargham434@gmail.com</p>
                                     </div>
-                                    <ArrowUpRight size={20} className="text-gray-700 opacity-0 group-hover/item:opacity-100 transition-all" />
+                                    <ArrowUpRight size={18} className="text-gray-700 opacity-0 group-hover/item:opacity-100 transition-all" />
                                 </a>
 
-                                <a href="tel:+923071963998" className="flex items-center gap-6 group/item w-fit">
-                                    <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover/item:border-neon-green transition-all shadow-xl">
-                                        <Phone size={24} className="text-gray-500 group-hover/item:text-neon-green" />
+                                <a href="tel:+923071963998" className="flex items-center gap-4 sm:gap-6 group/item w-fit">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover/item:border-neon-green transition-all shadow-xl">
+                                        <Phone size={20} className="text-gray-500 group-hover/item:text-neon-green sm:w-6 sm:h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-gray-600 uppercase tracking-widest font-black mb-1">Call for Action</p>
-                                        <p className="text-xl text-white font-bold group-hover/item:text-neon-green transition-colors">+92 307 1963998</p>
+                                        <p className="text-[8px] sm:text-[10px] text-gray-600 uppercase tracking-widest font-black mb-1">Call for Action</p>
+                                        <p className="text-base sm:text-xl text-white font-bold group-hover/item:text-neon-green transition-colors">+92 307 1963998</p>
                                     </div>
-                                    <ArrowUpRight size={20} className="text-gray-700 opacity-0 group-hover/item:opacity-100 transition-all" />
+                                    <ArrowUpRight size={18} className="text-gray-700 opacity-0 group-hover/item:opacity-100 transition-all" />
                                 </a>
                             </div>
                         </div>
 
                         <div className="relative">
-                            <div className="glass-card rounded-[3rem] p-10 border border-white/10 relative z-10 transition-all duration-700 group-hover:scale-[1.02]">
-                                <h3 className="text-2xl font-black text-white mb-8 uppercase tracking-widest italic">Direct Message</h3>
+                            <div className="glass-card rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-10 border border-white/10 relative z-10 transition-all duration-700 group-hover:scale-[1.02]">
+                                <h3 className="text-xl sm:text-2xl font-black text-white mb-6 sm:mb-8 uppercase tracking-widest italic text-center sm:text-left">Direct Message</h3>
                                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                                     <div className="space-y-2">
                                         <label className="text-[10px] text-gray-600 uppercase tracking-[0.2em] font-black ml-4">Full Name</label>
@@ -134,9 +134,9 @@ const Contact = () => {
                 </div>
             </div>
 
-            <footer className="mt-40 text-center pb-20">
-                <div className="max-w-6xl mx-auto px-4 border-t border-white/5 pt-20">
-                    <p className="text-[10px] font-mono text-gray-700 uppercase tracking-[0.5em] font-black">
+            <footer className="mt-20 sm:mt-40 text-center pb-20">
+                <div className="max-w-6xl mx-auto px-4 border-t border-white/5 pt-16 sm:pt-20">
+                    <p className="text-[8px] sm:text-[10px] font-mono text-gray-700 uppercase tracking-[0.3em] sm:tracking-[0.5em] font-black">
                         © 2026 Zargham Shaukat. Powered by Precision & Innovation.
                     </p>
                 </div>

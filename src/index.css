@@ -16,6 +16,7 @@
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -23,6 +24,9 @@ body {
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
 }
 
 h1,
@@ -63,7 +67,7 @@ html {
 }
 
 .glass-card {
-    background: rgba(15, 15, 15, 0.85);
+    background: rgba(15, 15, 15, 0.4);
     /* More opaque background, less reliance on blur */
     backdrop-filter: blur(8px);
     /* Reduced from 16px to save GPU */
